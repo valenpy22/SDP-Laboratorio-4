@@ -1,0 +1,4 @@
+Número total de puntos: 100000
+Número de procesos MPI: 4
+Número de hilos OpenMP por proceso: 8
+Estimación de π: 3.1338
