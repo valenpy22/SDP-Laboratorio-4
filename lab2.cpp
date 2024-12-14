@@ -170,18 +170,35 @@ int main(int argc, char* argv[]) {
     // Generar una semilla única para este proceso basado en su rank
     unsigned int seed = time(NULL) + rank;
 
+    // Medir tiempo de inicio total
+    double total_start_time = MPI_Wtime();
+
+    // Medir tiempo para el cálculo
+    double computation_start_time = MPI_Wtime();
+
     // Calcular puntos dentro del círculo para este proceso
     long long local_count = calculate_points_in_circle(points_per_process, seed); 
+
+    // Tiempo de finalización de la sección de cálculo
+    double computation_end_time = MPI_Wtime();
 
     // Reducir y calcular el valor estimado de pi
     double pi_estimate = reduce_and_calculate_pi(local_count, total_points, rank); 
 
+    // Tiempo de finalización total
+    double total_end_time = MPI_Wtime();
+
     // Mostrar resultado final
     if (rank == 0) {
+        // Resultados finales
         std::cout << "Número total de puntos: " << total_points << "\n";
         std::cout << "Número de procesos MPI: " << size << "\n";
         std::cout << "Número de hilos OpenMP por proceso: " << num_threads << "\n";
         std::cout << "Estimación de π: " << pi_estimate << "\n";
+
+        // Tiempos de ejecución
+        std::cout << "Tiempo total de ejecución: " << (total_end_time - total_start_time) << " segundos\n";
+        std::cout << "Tiempo en el cálculo: " << (computation_end_time - computation_start_time) << " segundos\n";
     }
 
     // Finalizar MPI liberando recursos

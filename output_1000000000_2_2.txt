@@ -1,4 +1,6 @@
 Número total de puntos: 1000000000
 Número de procesos MPI: 2
 Número de hilos OpenMP por proceso: 2
-Estimación de π: 3.14161
+Estimación de π: 3.1416
+Tiempo total de ejecución: 7.94164 segundos
+Tiempo en el cálculo: 7.93503 segundos

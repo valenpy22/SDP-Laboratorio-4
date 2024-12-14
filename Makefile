@@ -22,14 +22,14 @@ clean:
 
 # Pruebas automatizadas con diferentes configuraciones
 test: $(EXEC)
-	@echo "Ejecutando pruebas..."
+	@echo "Ejecutando pruebas y capturando tiempos..."
 	@for points in $(TEST_POINTS); do \
 	    for threads in $(TEST_THREADS); do \
 	        for procs in $(TEST_PROCESSES); do \
 	            export OMP_NUM_THREADS=$$threads; \
 	            echo "Prueba: $$points puntos, $$procs procesos MPI, $$threads hilos OpenMP"; \
 	            mpirun -np $$procs ./$(EXEC) $$points $$procs $$threads > output_$$points\_$$procs\_$$threads.txt; \
-	            echo "Resultado almacenado en output_$$points\_$$procs\_$$threads.txt"; \
+	            echo "Resultados guardados en output_$$points\_$$procs\_$$threads.txt"; \
 	        done; \
 	    done; \
 	done
