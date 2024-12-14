@@ -6,7 +6,7 @@ SRC = lab2.cpp      # Archivo fuente
 
 # Parámetros de prueba
 TEST_POINTS = 100000 500000 1000000000
-TEST_THREADS = 2 4 8 
+TEST_THREADS = 2 4 8
 TEST_PROCESSES = 2 4
 
 # Objetivo principal: compilar
